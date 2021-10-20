@@ -10,11 +10,11 @@ public class Interval {
         String msg;
         if (a >= 0 && a <= 15) {
             msg = "[0 - 15]";
-        } else if (a < 36) {
+        } else if (a > 15 && a < 36) {
             msg = "[16 - 35]";
-        } else if (a < 51) {
+        } else if (a > 36 && a < 51) {
             msg = "[36 - 50]";
-        } else if (a <= 100) {
+        } else if (a > 50 && a <= 100) {
             msg = "[51 - 100]";
         } else {
             msg = ", который отсутствует на нашем колесе фортуны. Введите другое число";
