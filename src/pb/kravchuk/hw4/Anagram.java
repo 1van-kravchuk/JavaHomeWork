@@ -15,16 +15,16 @@ public class Anagram {
         } else {
             System.out.println("Your messages are anagrams");
         }
-
     }
-    public static boolean isAnagram (String s1, String s2){
+
+    public static boolean isAnagram(String s1, String s2) {
         s1 = s1.replaceAll("[^A-Za-zА-Яа-я]", "");
         s2 = s2.replaceAll("[^A-Za-zА-Яа-я]", "");
-        if (s1.length() != s2.length()){
+        s1 = s1.toLowerCase();
+        s2 = s2.toLowerCase();
+        if (s1.length() != s2.length()) {
             return false;
         } else {
-            s1 = s1.toLowerCase();
-            s2 = s2.toLowerCase();
             char[] ch1 = s1.toCharArray();
             char[] ch2 = s2.toCharArray();
             Arrays.sort(ch1);
@@ -33,6 +33,5 @@ public class Anagram {
             String sch2 = new String(ch2);
             return sch1.equals(sch2);
         }
-
     }
 }

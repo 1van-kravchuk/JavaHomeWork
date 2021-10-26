@@ -8,8 +8,6 @@ public class CapitalLetter {
         System.out.println("Enter your message:");
         String str = scan.nextLine();
         System.out.println(toTitleCase(str));
-
-
     }
 
     public static String toTitleCase(String s) {     // магия
