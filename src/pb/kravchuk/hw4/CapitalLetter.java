@@ -4,20 +4,20 @@ import java.util.Scanner;
 
 public class CapitalLetter {
     public static void main(String[] args) {
-        Scanner scaan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         System.out.println("Enter your message:");
-        String str = scaan.nextLine();
+        String str = scan.nextLine();
         System.out.println(toTitleCase(str));
 
 
     }
 
-    public static String toTitleCase(String s) {     // магия. разобраться!
-        String result = "";
+    public static String toTitleCase(String s) {     // магия
+        StringBuilder result = new StringBuilder();
         String[] words = s.split(" ");
-        for (int i = 0; i < words.length; i++) {
-            result += words[i].replaceFirst(words[i].charAt(0) + "", Character.toUpperCase(words[i].charAt(0)) + "") + " ";
+        for (String word : words) {
+            result.append(word.replaceFirst(String.valueOf(word.charAt(0)), String.valueOf(Character.toUpperCase(word.charAt(0))))).append(" ");
         }
-        return result;
+        return result.toString();
     }
 }
