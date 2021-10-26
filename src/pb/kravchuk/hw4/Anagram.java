@@ -1,7 +1,6 @@
 package pb.kravchuk.hw4;
 
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Anagram {
@@ -11,14 +10,16 @@ public class Anagram {
         String str1 = scan.nextLine();
         System.out.println("enter your second message");
         String str2 = scan.nextLine();
-        if(isAnagram(str1, str2) == true){
-            System.out.println("Your messages are anagrams");
-        } else {
+        if (!isAnagram(str1, str2)) {
             System.out.println("Your messages are NOT anagrams");
+        } else {
+            System.out.println("Your messages are anagrams");
         }
 
     }
     public static boolean isAnagram (String s1, String s2){
+        s1 = s1.replaceAll("[^A-Za-zА-Яа-я]", "");
+        s2 = s2.replaceAll("[^A-Za-zА-Яа-я]", "");
         if (s1.length() != s2.length()){
             return false;
         } else {
