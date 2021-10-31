@@ -16,8 +16,8 @@ public class Library {
         reader[1] = new Reader("Джон Картер", 1002, "История", "01.12.1976", "+10(002)5467890");
         reader[2] = new Reader("Василий Пупкин", 1003, "Математика", "02.02.1998", "+38(099)9097052");
 
-        for (int i = 0; i < books.length; i++) {
-            System.out.println(books[i].getTitle() + " (" + books[i].getAuthor() + " " + books[i].getYear() + ")");
+        for (Book book : books) {
+            System.out.println(book.getTitle() + " (" + book.getAuthor() + " " + book.getYear() + ")");
         }
 
         for (Reader x : reader) {

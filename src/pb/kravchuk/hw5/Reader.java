@@ -4,11 +4,11 @@ package pb.kravchuk.hw5;
 import java.util.Arrays;
 
 public class Reader {
-    private String name;
-    private int libCardNum;
-    private String faculty;
-    private String birthDate;
-    private String phoneNum;
+    private final String name;
+    private final int libCardNum;
+    private final String faculty;
+    private final String birthDate;
+    private final String phoneNum;
 
 
     public Reader(String name, int libCardNum, String faculty, String birthDate, String phoneNum) {
@@ -40,15 +40,15 @@ public class Reader {
     }
 
     public void takeBook(int countOfBooks) {
-        System.out.println(new StringBuilder().append(name).append(" has taken ").append(countOfBooks).append(" books: ").toString());
+        System.out.println(name + " has taken " + countOfBooks + " books: ");
     }
 
     public void takeBook(String... books) {
-        System.out.println(new StringBuilder().append(name).append(" has taken ").append(Arrays.toString(books)).toString());
+        System.out.println(name + " has taken " + Arrays.toString(books));
     }
 
     public void takeBook(Book... books) {
-        System.out.println(new StringBuilder().append(name).append(" has taken ").append(Arrays.toString(books)).toString());
+        System.out.println(name + " has taken " + Arrays.toString(books));
     }
 
     public void returnBook(int count) {
@@ -56,11 +56,11 @@ public class Reader {
     }
 
     public void returnBook(String... books) {
-        System.out.println(new StringBuilder().append(name).append(" has returned books ").append(Arrays.toString(books)).toString());
+        System.out.println(name + " has returned books " + Arrays.toString(books));
     }
 
     public void returnBook(Book... books) {
-        System.out.println(new StringBuilder().append(name).append(" has returned books ").append(Arrays.toString(books)).toString());
+        System.out.println(name + " has returned books " + Arrays.toString(books));
     }
 }
 
