@@ -9,8 +9,6 @@ public class Reader {
     private String faculty;
     private String birthDate;
     private String phoneNum;
-    public static int count = 0;
-
 
 
     public Reader(String name, int libCardNum, String faculty, String birthDate, String phoneNum) {
@@ -49,16 +47,20 @@ public class Reader {
         System.out.println(new StringBuilder().append(name).append(" has taken ").append(Arrays.toString(books)).toString());
     }
 
+    public void takeBook(Book... books) {
+        System.out.println(new StringBuilder().append(name).append(" has taken ").append(Arrays.toString(books)).toString());
+    }
+
     public void returnBook(int count) {
         System.out.println(name + " has returned " + count + " books");
     }
 
-    public void returnBook(String... book) {
-        System.out.println(new StringBuilder().append(name).append(" has returned books ").append(Arrays.toString(book)).toString());
+    public void returnBook(String... books) {
+        System.out.println(new StringBuilder().append(name).append(" has returned books ").append(Arrays.toString(books)).toString());
     }
 
-    public void returnBook(String name, String title, String author, int year) {
-        System.out.print(name + " has returned books: ");
-        System.out.print(title + " (" + author + " " + " " + year + ") ");
+    public void returnBook(Book... books) {
+        System.out.println(new StringBuilder().append(name).append(" has returned books ").append(Arrays.toString(books)).toString());
     }
 }
+

@@ -4,6 +4,7 @@ public class Book {
     private String title;
     private String author;
     private int year;
+    private String info;
 
     public Book(String title, String author, int year) {
         this.author = author;
@@ -22,4 +23,9 @@ public class Book {
     public int getYear() {
         return year;
     }
+    public String getInfo(){
+        info = title+" ("+author+", "+year+" год)";
+        return info;
+    }
+
 }
