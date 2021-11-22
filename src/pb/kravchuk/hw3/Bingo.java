@@ -10,12 +10,13 @@ public class Bingo {
         System.out.println("Если не хочешь продолжать игру, введи - exit");
         String isExit;
         Scanner scan = new Scanner(System.in);
-
-        for (int i = 1; i <= 100; i++) {
-
+int i =1;
+        while(i<10) {
+i++;
             System.out.println("Введи число. Попытка: " + i);
             isExit = scan.next();
             if (isExit.equals("exit")) {
+                System.out.println("очень жаль, что ты оказался таким слабаком и сдался в самом начале веселья. :(");
                 break;
             } else {
                 int x = Integer.parseInt(isExit);

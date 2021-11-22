@@ -19,16 +19,11 @@ public class Atelier {
         System.out.println("----------------------------------");
         System.out.println("Women's dress");
         dressWoman(clothes);
-
-
-
     }
 
     private static void dressMan(Clothes[] clothes) {
         for (Clothes clothes1 : clothes) {
-            if (clothes1 instanceof ManClothes) {
-                System.out.println(clothes1);
-            }
+            if (clothes1 instanceof ManClothes) System.out.println(clothes1);
         }
     }
 

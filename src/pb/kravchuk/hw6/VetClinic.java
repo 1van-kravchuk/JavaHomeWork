@@ -1,6 +1,6 @@
 package pb.kravchuk.hw6;
 
-import javax.xml.namespace.QName;
+
 import java.lang.reflect.Field;
 
 public class VetClinic {
@@ -13,7 +13,7 @@ public class VetClinic {
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        System.out.println("Hello, i am veterinarian, "+ veterinarian.toString());
+        System.out.println("Hello, i am veterinarian, "+ veterinarian);
         System.out.println();
         Animal[] animals = new Animal[3];
         animals[0] = new Cat("fish", "Meow meow", "house", "Mojo");
