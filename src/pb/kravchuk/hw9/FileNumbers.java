@@ -1,23 +1,34 @@
 package pb.kravchuk.hw9;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class FileNumbers {
-    public void createNumbersFile() {
-        int[][] arr = new int[10][10];
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                arr[i][j] = (((int) Math.random() * 100) + 1);
-            }
+    int[][] arr = new int[10][10];
+
+    public void createNumbersFile() throws IOException {
+        File file = new File("files/numbers.txt");
+        if (file.createNewFile()) {
+            System.out.println("File numbers.txt was created");
+        } else {
+            System.out.println("File numbers.txt is already exist");
         }
+
+
         try (Writer writer = new FileWriter("files/numbers.txt")) {
-            writer.write(String.valueOf(arr));
+            for (int i = 0; i < arr.length; i++) {
+                for (int j = 0; j < arr[i].length; j++) {
+                    arr[i][j] = (int) ((Math.random() * 100) + 1);
+                    System.out.print(arr[i][j] + " ");
+                    writer.write(arr[i][j] + " ");
+                }
+                System.out.println();
+                writer.write("\n");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -25,22 +36,47 @@ public class FileNumbers {
 
     public void createOddNumbersFile() {
         Path path = Paths.get("files/numbers.txt");
-
-        try (Scanner scan = new Scanner(path)) {
-            while (true) {
-                String str = scan.nextLine();
-                System.out.println(str);
+        File file = new File(String.valueOf(path));
+        try (Scanner scan = new Scanner(file)) {
+            while (scan.hasNextLine()) {
+                int x = scan.nextInt();
+                File file1 = new File("files/odd-numbers.txt");
+                if (file1.createNewFile()) {
+                    System.out.println("File numbers.txt was created");
+                } else {
+                    System.out.println("File numbers.txt is already exist");
+                }
+                try (Writer writer = new FileWriter("files/odd-numbers.txt")) {
+                    for (int i = 0; i < arr.length; i++) {
+                        for (int j = 0; j < arr[i].length; j++) {
+                            arr[i][j] = (int) ((Math.random() * 100) + 1);
+                            if (arr[i][j] % 2 == 0) arr[i][j] = 0;
+                            System.out.print(arr[i][j] + " ");
+                            writer.write(arr[i][j] + " ");
+                        }
+                        System.out.println();
+                        writer.write("\n");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         } catch (NoSuchElementException e) {
-            System.out.println("file has been read");
+            System.out.println("No such element" + e);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("file has been read");
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
         FileNumbers fileNumbers = new FileNumbers();
+
+        System.out.println("Write elements");
         fileNumbers.createNumbersFile();
-//        fileNumbers.createOddNumbersFile();
+        System.out.println();
+        System.out.println("read elements");
+        fileNumbers.createOddNumbersFile();
     }
 }
