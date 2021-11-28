@@ -66,7 +66,7 @@ public class FileNumbers {
         System.out.println("Write elements");
         fileNumbers.createNumbersFile();
         System.out.println();
-        System.out.println("read elements");
+        System.out.println("Read elements");
         fileNumbers.createOddNumbersFile();
     }
 }
