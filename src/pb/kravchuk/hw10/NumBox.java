@@ -1,22 +1,22 @@
 package pb.kravchuk.hw10;
 
-import java.util.Arrays;
 
-public class NumBox<T> extends Number {
+
+public class NumBox<T extends Number> {
     private T[] array;
-    private int maxLength;
 
-    public NumBox(int maxLength) {
-        this.array = (T[]) new Object[maxLength];
+
+    public NumBox(int maxLength) throws ClassCastException {
+        array = (T[]) new Number[maxLength];
     }
 
-    public void add(T num) {
-        T[] newArray = Arrays.copyOf(array, array.length+1);
+    public void add(int index, T num) {
+
         try {
-            array = newArray;
-            array[array.length - 1] = num;
+
+            array[index] = num;
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("array is fool" + e);
+            System.out.println("array is fool: " + e);
         }
     }
 
@@ -30,47 +30,27 @@ public class NumBox<T> extends Number {
 
     public double average() {
         double sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            sum = sum + (Double) array[i];
+        for (T t : array) {
+            sum = sum + t.doubleValue();
         }
-        double average = sum / array.length;
-        return average;
+        return sum / array.length;
     }
 
     public double sum() {
         double sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            sum = sum + (Double) array[i];
+        for (T t : array) {
+            sum = sum + t.doubleValue();
         }
         return sum;
     }
+public T max(){
 
-    @Override
-    public int intValue() {
-        return 0;
+     T maxNum = array[0];
+    for (T t : array) {
+        if (maxNum.doubleValue() <= t.doubleValue()) {
+            maxNum = t;
+        }
     }
-
-    @Override
-    public long longValue() {
-        return 0;
-    }
-
-    @Override
-    public float floatValue() {
-        return 0;
-    }
-
-    @Override
-    public double doubleValue() {
-        return 0;
-    }
-//public T[] max(){
-//        double maxNum = 0;
-//    for (int i = 0; i< array.length; i++) {
-//        if (maxNum <= (Double) array[i]){
-//            maxNum = (Double) array[i];
-//        }
-//    }
-//    return doubleValue(maxNum);
-//}
+    return maxNum;
+}
 }
