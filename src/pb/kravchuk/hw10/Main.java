@@ -2,7 +2,7 @@ package pb.kravchuk.hw10;
 
 public class Main {
     public static void main(String[] args) {
-        NumBox <Integer> arr = new NumBox<>(4);
+        NumBox<Integer> arr = new NumBox<>(4);
         arr.add(0, 2);
         arr.add(1, 3);
         arr.add(2, 5);
