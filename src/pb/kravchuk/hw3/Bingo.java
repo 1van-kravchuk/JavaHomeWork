@@ -12,7 +12,6 @@ public class Bingo {
         Scanner scan = new Scanner(System.in);
 int i =1;
         while(i<10) {
-i++;
             System.out.println("Введи число. Попытка: " + i);
             isExit = scan.next();
             if (isExit.equals("exit")) {
@@ -30,6 +29,7 @@ i++;
                     break;
                 }
             }
+            i++;
         }
         System.out.println("Game over");
     }
