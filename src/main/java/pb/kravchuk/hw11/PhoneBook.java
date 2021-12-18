@@ -39,26 +39,22 @@ public class PhoneBook extends BookMethods {
             int choice = scan.nextInt();
             switch (choice) {
                 case 1:
-                    book.addContact();
-                    List<Contact> list = Arrays.asList(
-                            new Contact ()
-                    );
-
+                    Contact.addContact();
                     break;
                 case 2:
-                    book.findContact();
+                    Contact.findContact();
                     break;
                 case 3:
-                    book.changeContact();
+                    Contact.changeContact();
                     break;
                 case 4:
-                    book.deleteContact();
+                    Contact.deleteContact();
                     break;
                 case 5:
-                    book.sortByName();
+                    Contact.sortByName();
                     break;
                 case 6:
-                    book.sortByDate();
+                    Contact.sortByDate();
                     break;
                 case 0:
                     System.out.println("Closing the phone book...");
