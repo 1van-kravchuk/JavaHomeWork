@@ -1,25 +1,35 @@
 package pb.kravchuk.hw11;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 public class Contact {
     // This class contains array of contacts
-    private String name;
+    private String firstName;
+    private String secondName;
     private String phone;
     private LocalDate dateOfBirth;
     private String address;
-    private LocalDate dateOfChange;
+    private LocalDateTime timeOfChange;
 
-    public Contact(){
-
+    public Contact() {
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
     public String getPhone() {
@@ -46,30 +56,31 @@ public class Contact {
         this.address = address;
     }
 
-    public LocalDate getDateOfChange() {
-        return dateOfChange;
+    public LocalDateTime getTimeOfChange() {
+        return timeOfChange;
     }
 
-    public void setDateOfChange(LocalDate dateOfChange) {
-        this.dateOfChange = dateOfChange;
+    public void setTimeOfChange(LocalDateTime timeOfChange) {
+        this.timeOfChange = timeOfChange;
     }
 
-    public Contact(String name, String phone, LocalDate dateOfBirth, String address, LocalDate dateOfChange) {
-        this.name = name;
+    public Contact(String firstName, String secondName, String phone, LocalDate dateOfBirth, String address, LocalDateTime dateOfChange) {
+        this.firstName = firstName;
+        this.secondName = secondName;
         this.phone = phone;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
-        this.dateOfChange = dateOfChange;
+        this.timeOfChange = dateOfChange;
     }
 
     @Override
     public String toString() {
         return "Contact{" +
-                "name='" + name + '\'' +
+                "name='" + firstName + " " + secondName + '\'' +
                 ", phone='" + phone + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", address='" + address + '\'' +
-                ", dateOfChange=" + dateOfChange +
+                ", dateOfChange=" + timeOfChange +
                 '}';
     }
 }

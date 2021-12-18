@@ -1,10 +1,19 @@
 package pb.kravchuk.hw11;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class BookMethods {
+Scanner sc = new Scanner(System.in);
 public void addContact(){
     System.out.println("this method adds a contact");
     //write to json file
     // write adds to a file
+    List<Contact> contactList = new ArrayList<>();
+    contactList.add("vasili", "pupkin", "0501234567", "")
+    System.out.println("Enter first name");
+
 }
 public void findContact(){
     System.out.println("this method find contact by name or something else");
