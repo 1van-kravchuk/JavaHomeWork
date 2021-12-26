@@ -21,7 +21,7 @@ public class PhoneBook {
 
             SimpleModule module = new SimpleModule();
             module.addSerializer(LocalDate.class, new LocalDateSerializer());
-            module.addDeserializer(LocalDate.class, new LocalDateDeserializer());
+  //          module.addDeserializer(LocalDate.class, new LocalDateDeserializer());
             mapper.registerModule(module);
 
             List<Contact> contactList = new ArrayList<>();
