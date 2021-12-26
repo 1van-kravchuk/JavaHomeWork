@@ -11,19 +11,20 @@ public class Consumer implements Runnable {
     }
 
     private Double consume() throws InterruptedException {
-//            synchronized (sharedQueue) {
+            synchronized (sharedQueue) {
                 if (sharedQueue.isEmpty()) {
+                    System.out.println("Consumer is waiting");
                     sharedQueue.wait();
                 }
- //               sharedQueue.notify();
+                sharedQueue.notify();
                 return sharedQueue.poll();
             }
-//        }
+        }
 
 
     @Override
     public void run() {
-        while (!sharedQueue.isEmpty()) {
+        while (true) {
             try {
                 System.out.println("Consumed: "+ consume());
             } catch (InterruptedException e) {

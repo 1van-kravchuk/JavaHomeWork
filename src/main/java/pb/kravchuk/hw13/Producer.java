@@ -12,16 +12,16 @@ public class Producer implements Runnable{
         this.sharedQueue = sharedQueue;
     }
     private double produce() throws InterruptedException{
-//        synchronized (sharedQueue){
+        synchronized (sharedQueue){
             if (sharedQueue.size()==SIZE){
                 sharedQueue.wait();
             }
             double newVal = Math.random();
             sharedQueue.add(newVal);
- //           sharedQueue.notify();
+            sharedQueue.notify();
             return newVal;
         }
-//    }
+    }
 
     @Override
     public void run() {
