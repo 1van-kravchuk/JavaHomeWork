@@ -1,29 +1,24 @@
 package pb.kravchuk.hw11;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class PhoneBook extends BookMethods {
+
     public static void main(String[] args) {
 
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+//        ObjectMapper mapper = new ObjectMapper();
+//        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+//
+//        SimpleModule module = new SimpleModule();
+//        module.addSerializer(LocalDate.class, new LocalDateSerializer());
+//        module.addDeserializer(LocalDate.class, new LocalDateDeserializer());
+//        mapper.registerModule(module);
+//
+//        List<Contact> contactList = new ArrayList<>();
 
-        SimpleModule module = new SimpleModule();
-        module.addSerializer(LocalDate.class, new LocalDateSerializer());
-        module.addDeserializer(LocalDate.class, new LocalDateDeserializer());
-        mapper.registerModule(module);
+        BookMethods book = new BookMethods();
+        Scanner scan = new Scanner(System.in);
 
-        List<Contact> contactList = new ArrayList<>();
-
-        PhoneBook book = new PhoneBook();
         while (true) {
             System.out.println(new StringBuilder()
                     .append("Hello. This is Phone book. \n")
@@ -31,30 +26,66 @@ public class PhoneBook extends BookMethods {
                     .append("To find contact press 2 \n")
                     .append("To change contact press 3 \n")
                     .append("To delete contact press 4 \n")
-                    .append("To sort contacts by name press 5 \n")
-                    .append("To sort contacts by date of change press 6 \n")
+                    .append("To sort contacts press 5 \n")
+                    .append("to save contacts to file press 6 \n")
+                    .append("to download contacts from file press 7 \n")
                     .append("To exit the program press 0 \n")
                     .append("Please, make your choice:"));
-            Scanner scan = new Scanner(System.in);
             int choice = scan.nextInt();
             switch (choice) {
                 case 1:
-                    Contact.addContact();
+                    book.addContact();
                     break;
                 case 2:
-                    Contact.findContact();
+                    System.out.println(new StringBuilder("To find contact \n")
+                            .append("by name press 1 \n")
+                            .append("by phone number press 2 \n")
+                            .append("to back to main menu press 0"));
+                    choice = scan.nextInt();
+                    switch (choice) {
+                        case 1:
+                            book.findContactByName();
+                            break;
+                        case 2:
+                            book.findContactByPhone();
+                            break;
+                        case 0:
+                            return;
+                        default:
+                            throw new IllegalStateException("Unexpected value: " + choice);
+                    }
                     break;
                 case 3:
-                    Contact.changeContact();
+                    book.changeContact();
                     break;
                 case 4:
-                    Contact.deleteContact();
+                    book.deleteContact();
                     break;
                 case 5:
-                    Contact.sortByName();
+                    System.out.println(new StringBuilder("sort by: \n")
+                            .append("1. name \n")
+                            .append("2. date of change \n")
+                            .append("0. back to main menu \n")
+                            .append("make your choise."));
+                    choice = scan.nextInt();
+                    switch (choice) {
+                        case 1:
+                            book.sortByName();
+                            break;
+                        case 2:
+                            book.sortByDate();
+                            break;
+                        case 0:
+                            return;
+                        default:
+                            throw new IllegalStateException("Unexpected value: " + choice);
+                    }
                     break;
                 case 6:
-                    Contact.sortByDate();
+                    book.saveToFile();
+                    break;
+                case 7:
+                    book.downloadFromFile();
                     break;
                 case 0:
                     System.out.println("Closing the phone book...");

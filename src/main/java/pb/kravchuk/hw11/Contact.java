@@ -2,45 +2,51 @@ package pb.kravchuk.hw11;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Objects;
 
 
 public class Contact {
-    // This class contains array of contacts
-    private String firstName;
-    private String secondName;
-    private String phone;
+    private int id;
+    private String name;
+    private List<String> phone;
     private LocalDate dateOfBirth;
     private String address;
     private LocalDateTime timeOfChange;
 
     public Contact() {
     }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
+    public Contact(int id, String name, List<String> phone, LocalDate dateOfBirth, String address) {
+        this.id = id;
+        this.name = name;
         this.phone = phone;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.timeOfChange = LocalDateTime.now();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setPhone(List<String> phone) {
+        this.phone = phone;
+    }
+
+    public List<String> getPhone() {
+        return phone;
     }
 
     public LocalDate getDateOfBirth() {
@@ -67,74 +73,23 @@ public class Contact {
         this.timeOfChange = timeOfChange;
     }
 
-    public Contact(String firstName, String secondName, String phone, LocalDate dateOfBirth, String address, LocalDateTime dateOfChange) {
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.phone = phone;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-        this.timeOfChange = dateOfChange;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contact contact = (Contact) o;
+        return id == contact.id && Objects.equals(name, contact.name) && Objects.equals(phone, contact.phone) && Objects.equals(dateOfBirth, contact.dateOfBirth) && Objects.equals(address, contact.address) && Objects.equals(timeOfChange, contact.timeOfChange);
     }
 
-    public static void addContact() {
-        System.out.println("this method adds a contact");
-        //write to json file
-        // write adds to a file
-        Scanner sc = new Scanner(System.in);
-        List<Contact> contactList = new ArrayList<>();
-        System.out.println("Enter first name");
-        String firstName = sc.next();
-        System.out.println("Enter second name");
-        String secondName = sc.next();
-        System.out.println("enter phone number");
-        String phone = sc.next();
-        System.out.println("enter date of birth");
-        LocalDate dateOfBirth = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
-        System.out.println("enter address");
-        String address = sc.next();
-        LocalDateTime timeOfChange = LocalDateTime.now();
-        try {
-            contactList.add(new Contact(firstName, secondName, phone, dateOfBirth, address, timeOfChange));
-            System.out.println("contact has been add \n");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("String: " + e);
-        }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, phone, dateOfBirth, address, timeOfChange);
     }
-
-    public static void findContact(){
-        System.out.println("this method find contact by name or something else");
-        System.out.println("enter the name of contact you are searching");
-        Scanner sc = new Scanner(System.in);
-        String name = sc.next();
-
-        // read from json?
-        //read from file
-    }
-    public static void deleteContact(){
-        System.out.println("this method deletes a contact");
-        //rewrite changes to file
-    }
-    public static void changeContact(){
-        System.out.println("this method changes a chosen contact");
-        //rewrite changes to file
-    }
-    public static void sortByName(){
-        System.out.println("this method sorts contacts by name");
-        //sort from json list
-    }
-    public static void sortByDate(){
-        System.out.println("this method sorts contacts by date of change");
-        //sort from json list
-    }
-
-
-
 
     @Override
     public String toString() {
         return "Contact{" +
-                "name='" + firstName + " " + secondName + '\'' +
+                "name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", address='" + address + '\'' +
