@@ -6,16 +6,6 @@ public class PhoneBook extends BookMethods {
 
     public static void main(String[] args) {
 
-//        ObjectMapper mapper = new ObjectMapper();
-//        mapper.enable(SerializationFeature.INDENT_OUTPUT);
-//
-//        SimpleModule module = new SimpleModule();
-//        module.addSerializer(LocalDate.class, new LocalDateSerializer());
-//        module.addDeserializer(LocalDate.class, new LocalDateDeserializer());
-//        mapper.registerModule(module);
-//
-//        List<Contact> contactList = new ArrayList<>();
-
         BookMethods book = new BookMethods();
         Scanner scan = new Scanner(System.in);
 
